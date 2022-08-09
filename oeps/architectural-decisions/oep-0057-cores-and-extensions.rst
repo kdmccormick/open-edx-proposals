@@ -46,12 +46,20 @@ Each repository increases the effort required to maintain the project and the co
 Specification
 *************
 
+We define several terms to help us organize and make decisions abut Open edX repositories.
+Firstly, we define two *Product Offerings*. Then, we define four axes upon which we will
+classify all Open edX repositories:
+
+* *ring*
+* *layer*, and
+* *support level*.
+
 
 Product Offerings
 =================
 
 The Open edX Product Working Group (PWG) shall create and maintain two product specifications:
-the **Core Product Offering** and the **Extended Product Offering**.
+the *Core Product Offering* and the *Extended Product Offering*.
 The PWG may document these specifications in any format, provided that:
 
 * they are always easy-to-find and publicly visible,
@@ -69,11 +77,11 @@ Extended Product Offering
 This is an articulation of which features should come supported by the community Open edX installation *without installing any additional software*, although configuration (overriding settings, toggling Waffle flags, etc.) may be necessary. By definition, this is a superset of the Core Product Offering. Ensuring the support, maintenance, security, and quality of these features is important, although secondary to ensuring so for the features in the Core Product Offering.
 
 
-Repository Tiers
+Repository Rings
 ================
 
 Based on the Product Offering specifications,
-we designate four tiers of Open edX repositories:
+we designate five *rings* of Open edX repositories:
 
 1. **Clerical** repositories exist solely to help manage the Open edX project itself.
    For example, they may contain process documentation,
@@ -100,21 +108,21 @@ we designate four tiers of Open edX repositories:
 4. **Supplemental** repositories, together with the kernel and bundled repositories,
    are necessary and sufficient to support the Extended Product Offering.
    In other words, supplemental repositories are part of the extended product
-   but no the core product. For example, a micro-service that operators could optionally
+   but not the core product. For example, a micro-service that operators could optionally
    enable in the Open edX community release would be considered a supplemental repository.
 
 5. **External** repositories describe all remaining repositories related to Open edX.
    They are neither used in the Extended Product Offering nor for clerical purposes.
-   There are an unbounded number of repositories in this tier.
+   There are an unbounded number of repositories in this ring.
 
 
-Repository Kinds
-================
+Repository Layers
+=================
 
 Depending on how a repository is used, we release it to the community in
 one of two different ways:
 
-* **Primary** repositories are the entry points for software that deploys and runs Open edX. These include:
+* **Top-layer** repositories are the entry points for software that deploys and runs Open edX. These include:
 
   * backend services,
   * frontend applications,
@@ -122,15 +130,17 @@ one of two different ways:
   * tools that are *not* invoked by other repositories, and
   * top-level documentation projects.
 
-* **Secondary** repositories are referenced and used by primary repositories,
+* **Lower-layer** repositories are referenced and used by primary repositories,
   either by numerical version or by git hash. These include:
 
   * libraries that are listed as explicit requirements by other repositories,
   * tools that are loaded and used by other repositories, and
   * documentation that is included into another documentation project.
 
-Note that a reposity's "kind" is just a tactical technical distinction;
+Note that a repository's layer is just a tactical technical distinction;
 it does not indicate the repository's importance, support level, or anything else qualitative.
+For example, an optional component may be defined in a top-layer micro-service repository,
+whereas a core architectural framework might be defined in a lower-layer library repository.
 
 
 
